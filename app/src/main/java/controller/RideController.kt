@@ -5,8 +5,8 @@ import entity.Ride
 
 class RideController(private val dataManager: DataManager) {
 
-    fun crearRide(ride: Ride) {
-        dataManager.agregarRide(ride)
+    fun crearRide(riDe: Ride) {
+        dataManager.agregarRide(riDe)
     }
 
     fun obtenerRidesPendientes(): List<Ride> {

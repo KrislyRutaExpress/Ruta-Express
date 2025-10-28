@@ -5,7 +5,7 @@ object Util {
         return telefono.matches(Regex("\\d{8}"))
     }
 
-    fun generarId(): String {
+    fun generarid(): String {
         return java.util.UUID.randomUUID().toString()
     }
 }
