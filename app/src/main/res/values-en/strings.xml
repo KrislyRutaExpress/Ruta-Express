@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">RutaExpress</string>
+    <string name="Register">Register</string>
+    <string name="StartBtn">Sign In</string>
+    <string name="btnRegister">Sign up</string>
+    <string name="namtxt">name</string>
+    <string name="ematxt">Email</string>
+    <string name="Contxt">Password</string>
+</resources>
