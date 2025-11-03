@@ -62,7 +62,7 @@ class Register : AppCompatActivity() {
 
                 Toast.makeText(this, "Registration successful!", Toast.LENGTH_LONG).show()
 
-                // Navegar al MainActivity
+
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
                 finish()

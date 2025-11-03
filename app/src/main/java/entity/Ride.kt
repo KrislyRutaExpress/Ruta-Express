@@ -7,4 +7,3 @@ class Ride(
     var estado: String, // "pendiente", "aceptado", "entregado"
     val repartidorId: String?
 )
-

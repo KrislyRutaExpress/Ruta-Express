@@ -10,6 +10,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:text="Ruta Express"
         android:textColor="#48B0BD"
         android:textSize="34sp"
@@ -90,5 +91,12 @@
         android:text="@string/StartBtn"
         tools:layout_editor_absoluteX="171dp"
         tools:layout_editor_absoluteY="394dp" />
+=======
+        android:text="Hello World!"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+>>>>>>> 2ec55151444870c7ddec95c06c4627f36fb9f285
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -21,5 +21,5 @@ class MemoryDataManager : DataManager {
 
     override fun getRidesByStatus(status: String): List<Ride> {
         return rides.filter { it.status == status }
-    }
-}
+
+    }  }
