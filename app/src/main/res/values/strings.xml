@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">RutaExpress</string>
+<<<<<<< HEAD
+    <string name="Register">Registro</string>
+    <string name="StartBtn">Inicio</string>
+    <string name="btnRegister">Registro</string>
+    <string name="namtxt">Nombre</string>
+    <string name="ematxt">Correo</string>
+    <string name="Contxt">Contraseña</string>
+=======
+>>>>>>> 2ec55151444870c7ddec95c06c4627f36fb9f285
 </resources>

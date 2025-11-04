@@ -2,7 +2,9 @@ package entity
 
 class User(
     val id: String,
-    val nombre: String,
-    val rol: String, // "restaurante", "cliente", "repartidor"
-    val telefono: String
+
+    val name: String,
+    val email: String,
+    val phone: String,
+    val password: String
 )

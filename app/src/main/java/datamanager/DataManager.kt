@@ -1,11 +1,14 @@
 package datamanager
 
-import entity.Ride
+
 import entity.User
+import entity.Ride
 
 interface DataManager {
-    fun agregarRide(ride: Ride)
-    fun obtenerRidesPorEstado(estado: String): List<Ride>
-    fun agregarUsuario(usuario: User)
-    fun obtenerUsuarioPorId(id: String): User?
-}
+    fun addUser(user: User)
+    fun getUserById(id: String): User?
+    fun addRide(ride: Ride)
+    fun getRidesByStatus(status: String): List<Ride>
+
+
+
