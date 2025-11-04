@@ -9,11 +9,6 @@ android {
 
     defaultConfig {
         applicationId = "com.example.rutaexpress"
-<<<<<<< HEAD
-        minSdk = 24
-=======
-        minSdk = 34
->>>>>>> 2ec55151444870c7ddec95c06c4627f36fb9f285
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
