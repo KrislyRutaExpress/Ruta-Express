@@ -5,40 +5,39 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Inbox">
+    tools:context=".RideListActivity">
 
     <TextView
-        android:id="@+id/titleInbox"
+        android:id="@+id/titleRideList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome to RutaExpress"
+        android:text="Ride List"
         android:textColor="#48B0BD"
         android:textSize="28sp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btnAddRide"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add New Ride"
-        app:layout_constraintBottom_toTopOf="@id/btnViewRides"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/titleInbox"
-        app:layout_constraintVertical_chainStyle="packed"
-        android:layout_marginBottom="20dp" />
-
-    <Button
-        android:id="@+id/btnViewRides"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="View Ride List"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvRides"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="70dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnAddRide" />
+        app:layout_constraintTop_toBottomOf="@id/titleRideList" />
+
+    <Button
+        android:id="@+id/btnAddNewRide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Add New Ride"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
