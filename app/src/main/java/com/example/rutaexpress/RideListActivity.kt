@@ -7,12 +7,19 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import datamanager.MemoryDataManager
 
-class Inbox : AppCompatActivity() {
+class RideListActivity : AppCompatActivity() {
+
+    private lateinit var rvRides: RecyclerView
+    private val dataManager = MemoryDataManager.getInstance()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_inbox)
+        setContentView(R.layout.activity_ride_list)
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -20,16 +27,26 @@ class Inbox : AppCompatActivity() {
             insets
         }
 
-        val btnAddRide = findViewById<Button>(R.id.btnAddRide)
-        btnAddRide.setOnClickListener {
+        rvRides = findViewById(R.id.rvRides)
+        rvRides.layoutManager = LinearLayoutManager(this)
+
+        loadRides()
+
+        val btnAddNewRide = findViewById<Button>(R.id.btnAddNewRide)
+        btnAddNewRide.setOnClickListener {
             val intent = Intent(this, AddRideActivity::class.java)
             startActivity(intent)
         }
+    }
 
-        val btnViewRides = findViewById<Button>(R.id.btnViewRides)
-        btnViewRides.setOnClickListener {
-            val intent = Intent(this, RideListActivity::class.java)
-            startActivity(intent)
-        }
+    override fun onResume() {
+        super.onResume()
+        loadRides()
+    }
+
+    private fun loadRides() {
+        val rides = dataManager.getAllRides()
+        val adapter = RideAdapter(rides)
+        rvRides.adapter = adapter
     }
 }

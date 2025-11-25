@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/refreinbox"
+        android:title="@string/menu_refresh" />
+    <item
+        android:id="@+id/Searchinbox"
+        android:title="@string/menu_search" />
+    <item
+        android:id="@+id/Logoutinbox"
+        android:title="@string/menu_logout" />
+</menu>

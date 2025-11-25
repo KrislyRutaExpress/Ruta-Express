@@ -1,9 +1,12 @@
 package entity
 
-class Ride(
+import android.graphics.Bitmap
+
+data class Ride(
     val id: String,
-    val nombreRestaurante: String,
-    val direccionCliente: String,
-    var estado: String, // "pendiente", "aceptado", "entregado"
-    val repartidorId: String?
+    val restaurantName: String,
+    val customerAddress: String,
+    var status: String, // "pending", "accepted", "delivered"
+    val deliveryPersonId: String?,
+    var photo: Bitmap? = null
 )

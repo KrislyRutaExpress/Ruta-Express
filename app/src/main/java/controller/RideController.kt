@@ -5,11 +5,11 @@ import entity.Ride
 
 class RideController(private val dataManager: DataManager) {
 
-    fun crearRide(riDe: Ride) {
-        dataManager.agregarRide(riDe)
+    fun createRide(ride: Ride) {
+        dataManager.addRide(ride)
     }
 
-    fun obtenerRidesPendientes(): List<Ride> {
-        return dataManager.obtenerRidesPorEstado("pendiente")
+    fun getPendingRides(): List<Ride> {
+        return dataManager.getRidesByStatus("pending")
     }
 }

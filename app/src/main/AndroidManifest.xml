@@ -2,6 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,24 +21,32 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RutaExpress"
         tools:targetApi="31">
+
         <activity
-<<<<<<< HEAD
+            android:name=".RideListActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".AddRideActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".Inbox"
             android:exported="false" />
+
         <activity
             android:name=".Register"
             android:exported="false" />
+
         <activity
-=======
->>>>>>> 2ec55151444870c7ddec95c06c4627f36fb9f285
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>

@@ -4,11 +4,11 @@ import datamanager.DataManager
 import entity.User
 
 class UserController(private val dataManager: DataManager) {
-    fun registrarUsuario(usuario: User) {
-        dataManager.agregarUsuario(usuario)
+    fun registerUser(user: User) {
+        dataManager.addUser(user)
     }
 
-    fun obtenerUsuario(id: String): User? {
-        return dataManager.obtenerUsuarioPorId(id)
+    fun getUser(id: String): User? {
+        return dataManager.getUserById(id)
     }
 }

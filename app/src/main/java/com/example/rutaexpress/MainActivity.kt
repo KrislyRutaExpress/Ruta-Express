@@ -1,12 +1,8 @@
 package com.example.rutaexpress
 
-
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-
-
-
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -24,19 +20,16 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-
         val btnLogin = findViewById<Button>(R.id.startbtn)
         btnLogin.setOnClickListener {
-            val intent = Intent(this, LoginActivity::class.java)
+            val intent = Intent(this, Inbox::class.java)
             startActivity(intent)
         }
-
 
         val btnRegister = findViewById<Button>(R.id.Registerbtn)
         btnRegister.setOnClickListener {
             val intent = Intent(this, Register::class.java)
             startActivity(intent)
         }
-
     }
 }

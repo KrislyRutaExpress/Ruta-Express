@@ -19,7 +19,7 @@ class Register : AppCompatActivity() {
     private lateinit var txtName: EditText
     private lateinit var txtEmail: EditText
     private lateinit var txtPassword: EditText
-    private val dataManager = MemoryDataManager()
+    private val dataManager = MemoryDataManager.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,7 +62,6 @@ class Register : AppCompatActivity() {
 
                 Toast.makeText(this, "Registration successful!", Toast.LENGTH_LONG).show()
 
-
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
                 finish()
@@ -74,5 +73,3 @@ class Register : AppCompatActivity() {
         }
     }
 }
-
-    }
