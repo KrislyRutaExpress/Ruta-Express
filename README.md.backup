@@ -1,0 +1,528 @@
+# 🚀 RutaExpress API
+
+REST API for managing deliveries in the RutaExpress delivery system. This API connects restaurants, customers, and delivery personnel.
+
+---
+
+## 🔗 Base URL
+
+**Local Development:**
+```
+http://localhost:5001
+```
+
+**Production (Render):**
+```
+https://rutaexpress-api.onrender.com
+```
+
+---
+
+## 📚 API Endpoints
+
+### 👤 Users
+
+#### 1. Register User
+**POST** `/users/register`
+
+Create a new user account.
+
+**Request:**
+```json
+{
+  "name": "Juan Pérez",
+  "email": "juan@example.com",
+  "password": "123456",
+  "role": "delivery"
+}
+```
+
+**Roles:** `restaurant`, `delivery`, `customer`
+
+**Response:**
+```json
+{
+  "data": {
+    "id": "1733512345678",
+    "name": "Juan Pérez",
+    "email": "juan@example.com",
+    "role": "delivery",
+    "isActive": true,
+    "createdAt": "2025-12-06T18:30:45.678Z"
+  },
+  "responseCode": "SUCCESSFUL",
+  "message": "User registered successfully"
+}
+```
+
+---
+
+#### 2. Authenticate User (Login)
+**POST** `/users/auth`
+
+Authenticate user credentials.
+
+**Request:**
+```json
+{
+  "email": "juan@example.com",
+  "password": "123456"
+}
+```
+
+**Response:**
+```json
+{
+  "data": {
+    "id": "1733512345678",
+    "name": "Juan Pérez",
+    "email": "juan@example.com",
+    "role": "delivery",
+    "isActive": true,
+    "createdAt": "2025-12-06T18:30:45.678Z"
+  },
+  "responseCode": "SUCCESSFUL",
+  "message": "Authentication successful"
+}
+```
+
+---
+
+#### 3. List All Users
+**GET** `/users`
+
+Get all registered users.
+
+**Response:**
+```json
+{
+  "data": [
+    {
+      "id": "1733512345678",
+      "name": "Juan Pérez",
+      "email": "juan@example.com",
+      "role": "delivery",
+      "isActive": true,
+      "createdAt": "2025-12-06T18:30:45.678Z"
+    }
+  ],
+  "responseCode": "SUCCESSFUL",
+  "message": "Users retrieved successfully"
+}
+```
+
+---
+
+#### 4. Get User by ID
+**GET** `/users/:id`
+
+Get specific user details.
+
+**Response:**
+```json
+{
+  "data": {
+    "id": "1733512345678",
+    "name": "Juan Pérez",
+    "email": "juan@example.com",
+    "role": "delivery",
+    "isActive": true,
+    "createdAt": "2025-12-06T18:30:45.678Z"
+  },
+  "responseCode": "SUCCESSFUL",
+  "message": "User found"
+}
+```
+
+---
+
+### 🚗 Rides (Deliveries)
+
+#### 1. Create Ride
+**POST** `/rides`
+
+Create a new delivery request.
+
+**Request:**
+```json
+{
+  "restaurantName": "Pizza Hut",
+  "customerAddress": "Av. Central, San José"
+}
+```
+
+**Response:**
+```json
+{
+  "data": {
+    "id": "1733512456789",
+    "restaurantName": "Pizza Hut",
+    "customerAddress": "Av. Central, San José",
+    "status": "pending",
+    "deliveryPersonId": null,
+    "deliveryPersonName": "",
+    "photoUrl": null,
+    "createdAt": "2025-12-06T18:35:56.789Z",
+    "updatedAt": "2025-12-06T18:35:56.789Z"
+  },
+  "responseCode": "SUCCESSFUL",
+  "message": "Ride created successfully"
+}
+```
+
+---
+
+#### 2. List All Rides
+**GET** `/rides`
+
+Get all delivery requests.
+
+**Response:**
+```json
+{
+  "data": [
+    {
+      "id": "1733512456789",
+      "restaurantName": "Pizza Hut",
+      "customerAddress": "Av. Central, San José",
+      "status": "pending",
+      "deliveryPersonId": null,
+      "deliveryPersonName": "",
+      "photoUrl": null,
+      "createdAt": "2025-12-06T18:35:56.789Z",
+      "updatedAt": "2025-12-06T18:35:56.789Z"
+    }
+  ],
+  "responseCode": "SUCCESSFUL",
+  "message": "Rides retrieved successfully"
+}
+```
+
+---
+
+#### 3. Get Ride by ID
+**GET** `/rides/:id`
+
+Get specific ride details.
+
+**Response:**
+```json
+{
+  "data": {
+    "id": "1733512456789",
+    "restaurantName": "Pizza Hut",
+    "customerAddress": "Av. Central, San José",
+    "status": "pending",
+    "deliveryPersonId": null,
+    "deliveryPersonName": "",
+    "photoUrl": null,
+    "createdAt": "2025-12-06T18:35:56.789Z",
+    "updatedAt": "2025-12-06T18:35:56.789Z"
+  },
+  "responseCode": "SUCCESSFUL",
+  "message": "Ride found"
+}
+```
+
+---
+
+#### 4. Accept Ride
+**PUT** `/rides/:id/accept`
+
+Delivery person accepts a ride.
+
+**Request:**
+```json
+{
+  "deliveryPersonId": "1733512345678",
+  "deliveryPersonName": "Juan Pérez"
+}
+```
+
+**Response:**
+```json
+{
+  "data": {
+    "id": "1733512456789",
+    "restaurantName": "Pizza Hut",
+    "customerAddress": "Av. Central, San José",
+    "status": "accepted",
+    "deliveryPersonId": "1733512345678",
+    "deliveryPersonName": "Juan Pérez",
+    "photoUrl": null,
+    "createdAt": "2025-12-06T18:35:56.789Z",
+    "updatedAt": "2025-12-06T18:40:12.345Z"
+  },
+  "responseCode": "SUCCESSFUL",
+  "message": "Ride accepted successfully"
+}
+```
+
+---
+
+#### 5. Reject Ride
+**PUT** `/rides/:id/reject`
+
+Delivery person rejects a ride.
+
+**Response:**
+```json
+{
+  "data": {
+    "id": "1733512456789",
+    "restaurantName": "Pizza Hut",
+    "customerAddress": "Av. Central, San José",
+    "status": "rejected",
+    "deliveryPersonId": null,
+    "deliveryPersonName": "",
+    "photoUrl": null,
+    "createdAt": "2025-12-06T18:35:56.789Z",
+    "updatedAt": "2025-12-06T18:40:30.123Z"
+  },
+  "responseCode": "SUCCESSFUL",
+  "message": "Ride rejected successfully"
+}
+```
+
+---
+
+#### 6. Mark as Delivered
+**PUT** `/rides/:id/deliver`
+
+Mark ride as delivered (optional photo).
+
+**Request:**
+```json
+{
+  "photoUrl": "https://example.com/photo.jpg"
+}
+```
+
+**Response:**
+```json
+{
+  "data": {
+    "id": "1733512456789",
+    "restaurantName": "Pizza Hut",
+    "customerAddress": "Av. Central, San José",
+    "status": "delivered",
+    "deliveryPersonId": "1733512345678",
+    "deliveryPersonName": "Juan Pérez",
+    "photoUrl": "https://example.com/photo.jpg",
+    "createdAt": "2025-12-06T18:35:56.789Z",
+    "updatedAt": "2025-12-06T19:10:45.678Z"
+  },
+  "responseCode": "SUCCESSFUL",
+  "message": "Ride marked as delivered"
+}
+```
+
+---
+
+#### 7. Delete Ride
+**DELETE** `/rides/:id`
+
+Delete a ride.
+
+**Response:**
+```json
+{
+  "responseCode": "SUCCESSFUL",
+  "message": "Ride deleted successfully"
+}
+```
+
+---
+
+#### 8. Get Rides by Status
+**GET** `/rides/status/:status`
+
+Filter rides by status.
+
+**Status values:** `pending`, `accepted`, `rejected`, `delivered`
+
+**Example:** `GET /rides/status/pending`
+
+**Response:**
+```json
+{
+  "data": [
+    {
+      "id": "1733512456789",
+      "restaurantName": "Pizza Hut",
+      "customerAddress": "Av. Central, San José",
+      "status": "pending",
+      "deliveryPersonId": null,
+      "deliveryPersonName": "",
+      "photoUrl": null,
+      "createdAt": "2025-12-06T18:35:56.789Z",
+      "updatedAt": "2025-12-06T18:35:56.789Z"
+    }
+  ],
+  "responseCode": "SUCCESSFUL",
+  "message": "Rides with status 'pending' retrieved successfully"
+}
+```
+
+---
+
+## 🧪 Testing with cURL
+
+### Users
+
+```bash
+# Register user
+curl -X POST http://localhost:5001/users/register \
+  -H "Content-Type: application/json" \
+  -d '{"name":"Juan Pérez","email":"juan@example.com","password":"123456","role":"delivery"}'
+
+# Login
+curl -X POST http://localhost:5001/users/auth \
+  -H "Content-Type: application/json" \
+  -d '{"email":"juan@example.com","password":"123456"}'
+
+# List users
+curl http://localhost:5001/users
+```
+
+### Rides
+
+```bash
+# Create ride
+curl -X POST http://localhost:5001/rides \
+  -H "Content-Type: application/json" \
+  -d '{"restaurantName":"Pizza Hut","customerAddress":"Av. Central, San José"}'
+
+# List rides
+curl http://localhost:5001/rides
+
+# Accept ride
+curl -X PUT http://localhost:5001/rides/1733512456789/accept \
+  -H "Content-Type: application/json" \
+  -d '{"deliveryPersonId":"1733512345678","deliveryPersonName":"Juan Pérez"}'
+
+# Mark as delivered
+curl -X PUT http://localhost:5001/rides/1733512456789/deliver \
+  -H "Content-Type: application/json" \
+  -d '{"photoUrl":"https://example.com/photo.jpg"}'
+
+# Get pending rides
+curl http://localhost:5001/rides/status/pending
+
+# Delete ride
+curl -X DELETE http://localhost:5001/rides/1733512456789
+```
+
+---
+
+## 🚀 Installation & Setup
+
+### Prerequisites
+- Node.js (v14 or higher)
+- npm
+
+### Local Development
+
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd RutaExpress-API
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Start the server:
+```bash
+npm start
+```
+
+Or use development mode with auto-reload:
+```bash
+npm run dev
+```
+
+The API will be available at `http://localhost:5001`
+
+---
+
+## 📦 Dependencies
+
+- **express** - Web framework
+- **body-parser** - Parse request bodies
+- **cors** - Enable CORS
+- **underscore** - Utility functions
+
+---
+
+## 🔄 Response Codes
+
+- `SUCCESSFUL` - Operation completed successfully
+- `ERROR` - Operation failed
+- `NOT_FOUND` - Resource not found
+
+---
+
+## 📊 Data Models
+
+### User
+```javascript
+{
+  id: string,
+  name: string,
+  email: string,
+  role: string,        // 'restaurant', 'delivery', 'customer'
+  isActive: boolean,
+  createdAt: string    // ISO 8601 date
+}
+```
+
+### Ride
+```javascript
+{
+  id: string,
+  restaurantName: string,
+  customerAddress: string,
+  status: string,              // 'pending', 'accepted', 'rejected', 'delivered'
+  deliveryPersonId: string,
+  deliveryPersonName: string,
+  photoUrl: string,
+  createdAt: string,           // ISO 8601 date
+  updatedAt: string            // ISO 8601 date
+}
+```
+
+---
+
+## 🌐 Deployment to Render
+
+1. Push code to GitHub
+2. Create new Web Service on Render
+3. Connect GitHub repository
+4. Configure:
+   - **Build Command:** `npm install`
+   - **Start Command:** `npm start`
+5. Deploy
+
+---
+
+## 📝 Notes
+
+- Data is stored in memory (resets on server restart)
+- For production, consider using a database (MongoDB, PostgreSQL, etc.)
+- No authentication tokens implemented (add JWT for production)
+- CORS is enabled for all origins
+
+---
+
+## 👨‍💻 Author
+
+RutaExpress API - Delivery Management System
+
+---
+
+## 📄 License
+
+ISC

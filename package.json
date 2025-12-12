@@ -1,0 +1,27 @@
+{
+  "name": "rutaexpress-api",
+  "version": "1.0.0",
+  "description": "REST API for RutaExpress delivery management system",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [
+    "REST",
+    "API",
+    "Express",
+    "Delivery"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "underscore": "^1.13.6"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
